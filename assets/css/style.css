@@ -3,3 +3,27 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+
+.Question{
+
+}
+
+.Choices {
+
+}
+
+.AnswerDivOne:hover {
+	outline: 5px solid gray;
+  	outline-offset: 1px;
+}
+
+.AnswerDivTwo:hover {
+	outline: 5px solid gray;
+  	outline-offset: 1px;
+}
+
+.AnswerDivThree:hover {
+	outline: 5px solid gray;
+  	outline-offset: 1px;
+}

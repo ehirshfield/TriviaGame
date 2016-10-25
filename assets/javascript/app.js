@@ -5,18 +5,22 @@ $(".StartButton").append('<button class="StartButtonStyle">Start!</button>');
 $(".TimeRemaining").hide();
 $(".Question").hide();
 $(".Choices").hide();
+$(".CorrectResponse").hide();
+$(".IncorrectResponse").hide();
+$(".OutOfTime").hide();
+$(".InformUserOfAnswer").hide();
+$(".AnswerImage").hide();
+$(".AllDone").hide();
+$(".AllResults").hide();
+$(".StartOver").hide();
 
 
 //Add intial question and answers to the divs
-$(".Question").append('<div class="QuestionDiv"></div>');
-$(".QuestionDiv").append(questionBank.questionOne.question);
-$(".Choices").append('<div class="AnswerDivOne"></div>');
-$(".Choices").append('<div class="AnswerDivTwo"></div>');
-$(".Choices").append('<div class="AnswerDivThree"></div>');
-$(".AnswerDivOne").append(questionBank.questionOne.answers.One);
-$(".AnswerDivTwo").append(questionBank.questionOne.answers.Two);
-$(".AnswerDivThree").append(questionBank.questionOne.answers.Three);
 
+loadQuestionsAndAnswers(questionBank.questionOne.question,questionBank.questionOne.answers.One
+	,questionBank.questionOne.answers.Two,questionBank.questionOne.answers.Three);
+
+};
 
 // Onclick of start button show what needs to be shown. Time Remaining, First Question, and First answers
 $(".StartButton").on("click", function(){
@@ -27,9 +31,20 @@ $(".StartButton").on("click", function(){
 	startTimer();
 })
 
+var loadQuestionsAndAnswers = function(x,y,z,w) {
 
-};
+	$(".Question").append('<div class="QuestionDiv"></div>');
+	$(".QuestionDiv").append(x);
+	$(".AnswerDivOne").append(y);
+	$(".AnswerDivTwo").append(z);
+	$(".AnswerDivThree").append(w);
+	
+	}
 
+//Keep Track of Right, Wrong, and Unanswered questions
+var correctAnswersCount = 0;
+var incorrectAnswersCount = 0;
+var unansweredCount = 0;
 
 //Object holding arrays for questions and answers
 
@@ -38,43 +53,195 @@ var questionBank = {
 			questionOne: { question: "What is the best pie?",
 							answers: { One: "Apple",
 										Two: "Cherry",
-										Three: "Strawberry"}
+										Three: "Strawberry"},
+							rightAnswer: "Apple"
 						},
 			questionTwo: { question: "What kind of cake is best?",
-							answers: { One: "Apple",
-										Two: "Cherry",
-										Three: "Strawberry"}
+							answers: { One: "Chocolate",
+										Two: "Pie",
+										Three: "Strawberry Shortcake"},
+							rightAnswer: "Pie"
 						},
 
 
 			questionThree: { question: "What kind of cookie is best?",
 							answers: { One: "Chocolate Chip",
 										Two: "Oatmeal Raisin",
-										Three: "Sugar"}
-
+										Three: "Sugar"},
+							rightAnswer: "Chocolate Chip"
 							}
 
 			};
 
 
 //Get time countdown working
-var timeCount = 3;
+var timeCount = 30;
 var decreaseInterval = 0;
+var questionKeeper = 0;
+
 var startTimer = function() {
 		
 	decreaseInterval = setInterval(decreaseTime,1000);
 	
-}
+};
 
 var decreaseTime = function() {
 	timeCount--;
-	$("#TimeCountdown").html(timeCount);
+	$(".TimeCountdown").html(timeCount);
 	if (timeCount === 0) {
 		clearInterval(decreaseInterval);
-		
-		}
+		runOutOfTime();
+		};
 
+	};
+
+//Run out of time
+
+var runOutOfTime = function() {
+
+	$(".Question").empty();
+	$(".Choices").empty();
+	$(".OutOfTime").show();
+	unansweredCount++;
+	if (questionKeeper === 0) {
+		$(".AnswerSpace").html(questionBank.questionOne.rightAnswer);
+		$(".InformUserOfAnswer").show();
+		$(".AnswerImage").show();
+		setTimeout(moveToQuestionTwo,5000);
+		questionKeeper = 1;
 	}
+	else if (questionKeeper === 1) {
+		$(".AnswerSpace").html(questionBank.questionTwo.rightAnswer);
+		$(".InformUserOfAnswer").show();
+		$(".AnswerImage").show();
+		setTimeout(moveToQuestionThree,5000);
+		questionKeeper = 2;
+	}
+	else if (questionKeeper === 2) {
+		$(".AnswerSpace").html(questionBank.questionThree.rightAnswer);
+		$(".InformUserOfAnswer").show();
+		$(".AnswerImage").show();
+		setTimeout(resultsPage,5000);
+		questionKeeper = 3;
+	}
+
+};
+
+
+//The user's guess
+
+$(".AnswerDivOne").on("click", function(){
+	if (questionBank.questionOne.answers.One === questionBank.questionOne.rightAnswer) {
+		console.log("Success!");
+	}
+
+});
+
+$(".AnswerDivTwo").on("click", function(){
+	if (questionBank.questionOne.answers.Two !== questionBank.questionOne.rightAnswer) {
+		console.log("Wrong Dummy!");
+	}
+	
+});
+
+$(".AnswerDivThree").on("click", function(){
+	if (questionBank.questionOne.answers.Three !== questionBank.questionOne.rightAnswer) {
+		console.log("Wrong Dummy!");
+	}
+	
+});
+
+//Correct Answer
+var userCorrect = function() {
+
+	$(".Question").empty();
+	$(".Choices").empty();
+	$(".OutOfTime").show();
+	$(".InformUserOfAnswer").show();
+	$(".AnswerImage").show();
+	correctAnswersCount++;
+	if (questionKeeper === 0) {
+		setTimeout(moveToQuestionTwo,5000);
+		questionKeeper = 1;
+	}
+	else if (questionKeeper === 1) {
+		setTimeout(moveToQuestionThree,5000);
+		questionKeeper = 2;
+	}
+	else if (questionKeeper === 2) {
+		setTimeout(resultsPage,5000);
+		questionKeeper = 3;
+	}
+
+};
+
+//Incorrect Answer
+var userIncorrect = function() {
+
+	$(".Question").empty();
+	$(".Choices").empty();
+	$(".OutOfTime").show();
+	$(".InformUserOfAnswer").show();
+	$(".AnswerImage").show();
+	incorrectAnswersCount++;
+	if (questionKeeper === 0) {
+		setTimeout(moveToQuestionTwo,5000);
+		questionKeeper = 1;
+	}
+	else if (questionKeeper === 1) {
+		setTimeout(moveToQuestionThree,5000);
+		questionKeeper = 2;
+	}
+	else if (questionKeeper === 2) {
+		setTimeout(resultsPage,5000);
+		questionKeeper = 3;
+	}
+
+};
+
+
+//Next Question
+
+var moveToQuestionTwo = function() {
+	$(".OutOfTime").hide();
+	$(".InformUserOfAnswer").hide();
+	$(".AnswerSpace").empty();
+	$(".AnswerImage").empty();
+	loadQuestionsAndAnswers(questionBank.questionTwo.question,questionBank.questionTwo.answers.One
+	,questionBank.questionTwo.answers.Two,questionBank.questionTwo.answers.Three);
+	timeCount = 3;
+	$(".TimeCountdown").html(timeCount);
+	startTimer();
+};
+
+var moveToQuestionThree = function() {
+	$(".OutOfTime").hide();
+	$(".InformUserOfAnswer").hide();
+	$(".AnswerSpace").empty();
+	$(".AnswerImage").empty();
+	loadQuestionsAndAnswers(questionBank.questionThree.question,questionBank.questionThree.answers.One
+	,questionBank.questionThree.answers.Two,questionBank.questionThree.answers.Three);
+	timeCount = 3;
+	$(".TimeCountdown").html(timeCount);
+	startTimer();
+};
+
+// RESULTS Page
+
+var resultsPage = function() {
+	$(".OutOfTime").hide();
+	$(".InformUserOfAnswer").hide();
+	$(".AnswerSpace").empty();
+	$(".AnswerImage").empty();
+	$(".AllDone").show();
+	$(".CorrectAnswersSpan").html(correctAnswersCount);
+	$(".IncorrectAnswersSpan").html(incorrectAnswersCount);
+	$(".UnansweredSpan").html(unansweredCount);
+	$(".AllResults").show();
+	$(".StartOver").show();
+
+}
+
 
 
 
