@@ -100,7 +100,9 @@ var decreaseTime = function() {
 var runOutOfTime = function() {
 
 	$(".Question").empty();
-	$(".Choices").empty();
+	$(".AnswerDivOne").empty();
+	$(".AnswerDivTwo").empty();
+	$(".AnswerDivThree").empty();
 	$(".OutOfTime").show();
 	unansweredCount++;
 	if (questionKeeper === 0) {
@@ -131,22 +133,149 @@ var runOutOfTime = function() {
 //The user's guess
 
 $(".AnswerDivOne").on("click", function(){
-	if (questionBank.questionOne.answers.One === questionBank.questionOne.rightAnswer) {
-		console.log("Success!");
+	if (questionKeeper === 0) {
+		if (questionBank.questionOne.answers.One === questionBank.questionOne.rightAnswer) {
+			console.log("Div 1 Q1 Success!");
+			clearInterval(decreaseInterval);
+			userCorrect();
+			return;
+		}
+		else{
+			console.log("Div 1 Q1 Wrong Dummy!");
+			clearInterval(decreaseInterval);
+			$(".AnswerSpace").html(questionBank.questionOne.rightAnswer);
+			userIncorrect();
+			return;
+		}
 	}
+	if (questionKeeper === 1) {
+		if (questionBank.questionTwo.answers.One === questionBank.questionTwo.rightAnswer) {
+			console.log("Div 1 Q2 Success!");
+			clearInterval(decreaseInterval);
+			userCorrect();
+			return;
+		}
+		else{
+			console.log("Div 1 Q2 Wrong Dummy!");
+			clearInterval(decreaseInterval);
+			$(".AnswerSpace").html(questionBank.questionTwo.rightAnswer);
+			userIncorrect();
+			return;
+		}
+	}
+	if (questionKeeper === 2) {
+		if (questionBank.questionThree.answers.One === questionBank.questionThree.rightAnswer) {
+			console.log("Div 1 Q3 Success!");
+			clearInterval(decreaseInterval);
+			userCorrect();
+			return;
+		}
+		else{
+			console.log("Div 1 Q3 Wrong Dummy!");
+			clearInterval(decreaseInterval);
+			$(".AnswerSpace").html(questionBank.questionThree.rightAnswer);
+			userIncorrect();
+			return;
+		}
+	}
+
 
 });
 
 $(".AnswerDivTwo").on("click", function(){
-	if (questionBank.questionOne.answers.Two !== questionBank.questionOne.rightAnswer) {
-		console.log("Wrong Dummy!");
+	if (questionKeeper === 0) {
+		if (questionBank.questionOne.answers.Two === questionBank.questionOne.rightAnswer) {
+			console.log("Div 2 Success!");
+			clearInterval(decreaseInterval);
+			userCorrect();
+			return;
+		}
+		else{
+			console.log("Div 2 Wrong Dummy!");
+			clearInterval(decreaseInterval);
+			$(".AnswerSpace").html(questionBank.questionOne.rightAnswer);
+			userIncorrect();
+			return;
+		}
+	}
+	if (questionKeeper === 1) {
+		if (questionBank.questionTwo.answers.Two === questionBank.questionTwo.rightAnswer) {
+			console.log("div 2 Success!");
+			clearInterval(decreaseInterval);
+			userCorrect();
+			return;
+		}
+		else{
+			console.log("Div 2 Wrong Dummy!");
+			clearInterval(decreaseInterval);
+			$(".AnswerSpace").html(questionBank.questionTwo.rightAnswer);
+			userIncorrect();
+			return;
+		}
+	}
+	if (questionKeeper === 2) {
+		if (questionBank.questionThree.answers.Two === questionBank.questionThree.rightAnswer) {
+			console.log("Div 2 Success!");
+			clearInterval(decreaseInterval);
+			userCorrect();
+			return;
+		}
+		else{
+			console.log("Div 2 Wrong Dummy!");
+			clearInterval(decreaseInterval);
+			$(".AnswerSpace").html(questionBank.questionThree.rightAnswer);
+			userIncorrect();
+			return;
+		}
 	}
 	
 });
 
 $(".AnswerDivThree").on("click", function(){
-	if (questionBank.questionOne.answers.Three !== questionBank.questionOne.rightAnswer) {
-		console.log("Wrong Dummy!");
+	if (questionKeeper === 0) { 
+		if (questionBank.questionOne.answers.Three === questionBank.questionOne.rightAnswer) {
+			console.log("Div 3Success!");
+			clearInterval(decreaseInterval);
+			userCorrect();
+			return;
+		}
+		else{
+			console.log("Div 3 Wrong Dummy!");
+			clearInterval(decreaseInterval);
+			$(".AnswerSpace").html(questionBank.questionOne.rightAnswer);
+			userIncorrect();
+			return;
+		}
+	}
+	else if (questionKeeper === 1) {
+		if (questionBank.questionTwo.answers.Three === questionBank.questionTwo.rightAnswer) {
+			console.log("Div 3 Success!");
+			clearInterval(decreaseInterval);
+			userCorrect();
+			return;
+		}
+		else{
+			console.log("Div 3 Wrong Dummy!");
+			clearInterval(decreaseInterval);
+			$(".AnswerSpace").html(questionBank.questionTwo.rightAnswer);
+			userIncorrect();
+			return;
+		}
+	}
+	else if (questionKeeper === 2) {
+		if (questionBank.questionThree.answers.Three === questionBank.questionThree.rightAnswer) {
+			console.log("Div 3 Success!");
+			clearInterval(decreaseInterval);
+			userCorrect();
+			return;
+		}
+		else{
+			console.log("Div 3 Wrong Dummy!");
+			clearInterval(decreaseInterval);
+			$(".AnswerSpace").html(questionBank.questionThree.rightAnswer);
+			userIncorrect();
+			return;
+		}
 	}
 	
 });
@@ -155,9 +284,10 @@ $(".AnswerDivThree").on("click", function(){
 var userCorrect = function() {
 
 	$(".Question").empty();
-	$(".Choices").empty();
-	$(".OutOfTime").show();
-	$(".InformUserOfAnswer").show();
+	$(".AnswerDivOne").empty();
+	$(".AnswerDivTwo").empty();
+	$(".AnswerDivThree").empty();
+	$(".CorrectResponse").show();
 	$(".AnswerImage").show();
 	correctAnswersCount++;
 	if (questionKeeper === 0) {
@@ -179,8 +309,10 @@ var userCorrect = function() {
 var userIncorrect = function() {
 
 	$(".Question").empty();
-	$(".Choices").empty();
-	$(".OutOfTime").show();
+	$(".AnswerDivOne").empty();
+	$(".AnswerDivTwo").empty();
+	$(".AnswerDivThree").empty();
+	$(".IncorrectResponse").show();
 	$(".InformUserOfAnswer").show();
 	$(".AnswerImage").show();
 	incorrectAnswersCount++;
@@ -204,24 +336,29 @@ var userIncorrect = function() {
 
 var moveToQuestionTwo = function() {
 	$(".OutOfTime").hide();
+	$(".CorrectResponse").hide();
+	$(".IncorrectResponse").hide();
 	$(".InformUserOfAnswer").hide();
 	$(".AnswerSpace").empty();
 	$(".AnswerImage").empty();
 	loadQuestionsAndAnswers(questionBank.questionTwo.question,questionBank.questionTwo.answers.One
 	,questionBank.questionTwo.answers.Two,questionBank.questionTwo.answers.Three);
-	timeCount = 3;
+	$(".Choices").show();
+	timeCount = 30;
 	$(".TimeCountdown").html(timeCount);
 	startTimer();
 };
 
 var moveToQuestionThree = function() {
 	$(".OutOfTime").hide();
+	$(".CorrectResponse").hide();
+	$(".IncorrectResponse").hide();
 	$(".InformUserOfAnswer").hide();
 	$(".AnswerSpace").empty();
 	$(".AnswerImage").empty();
 	loadQuestionsAndAnswers(questionBank.questionThree.question,questionBank.questionThree.answers.One
 	,questionBank.questionThree.answers.Two,questionBank.questionThree.answers.Three);
-	timeCount = 3;
+	timeCount = 30;
 	$(".TimeCountdown").html(timeCount);
 	startTimer();
 };
@@ -230,6 +367,8 @@ var moveToQuestionThree = function() {
 
 var resultsPage = function() {
 	$(".OutOfTime").hide();
+	$(".CorrectResponse").hide();
+	$(".IncorrectResponse").hide();
 	$(".InformUserOfAnswer").hide();
 	$(".AnswerSpace").empty();
 	$(".AnswerImage").empty();
