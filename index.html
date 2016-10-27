@@ -9,58 +9,77 @@
 		<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<div class="jumbotron center-block">
-			<div class="row Title center-block">
-				<h1> Trivia!
-				</h1>
-			</div>
-			<div class="row StartButton center-block">
-			</div>
-			<div class="row TimeRemaining center-block">
-				<p>Time Remaining: <span class="TimeCountdown">30</span> Seconds</p>
-			</div>
-			<div class="row Question center-block">
+		<div class="container">
+			<div class="jumbotron">
+				<div class="row Title">
+					<h1> Trivia!
+					</h1>
+				</div>
+				<div class="row StartButton">
+				</div>
+				<div class="row TimeRemaining">
+					<h2>Time Remaining: <span class="TimeCountdown">30</span> Seconds</h2>
+				</div>
+				<div class="row Question">
+					
+				</div>
+				<div class="row">
+					<div class="Choices col-md-12">
+						<div class="row">
+							<div class="AnswerDivOne center-block">
+							</div>
+						</div>
+						<div class="row">
+							<div class="AnswerDivTwo center-block">
+							</div>
+						</div>
+						<div class="row">
+							<div class="AnswerDivThree center-block">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row CorrectResponse">
+					<h2>Correct!</h2>
+				</div>
+				<div class="row IncorrectResponse">
+					<h2>Wrong!</h2>
+				</div>
+				<div class="row OutOfTime">
+					<h2>Out of Time!</h2>
+				</div>
+				<div class="row InformUserOfAnswer">
+					<h2>The Correct Answer was: <span class="AnswerSpace"></span></h2>
+				</div>
 				
-			</div>
-			<div class="row Choices center-block">
-				<div class="AnswerDivOne center-block"></div>
-				<div class="AnswerDivTwo center-block"></div>
-				<div class="AnswerDivThree center-block"></div>
-			</div>
-			<div class="row CorrectResponse center-block">
-				<h2>Correct!</h2>
-			</div>
-			<div class="row IncorrectResponse center-block">
-				<h2>Wrong!</h2>
-			</div>
-			<div class="row OutOfTime center-block">
-				<h2>Out of Time!</h2>
-			</div>
-			<div class="row InformUserOfAnswer center-block">
-				<h2>The Correct Answer was: <span class="AnswerSpace"></span></h2>
-			</div>
-			
-			<div class="row AnswerImage center-block">
+				<div class="row">
+					<!-- <div class="col-md-4">
+					</div> -->
+					<div class="AnswerImage center-block">
 
-			</div>
-			<div class="row AllDone center-block">
-				<h2>All Done, Here's How You Did</h2>
-			</div>
-			<div class="row AllResults center-block">
-				<div class="center-block">
-					Correct Answers: <span class="CorrectAnswersSpan"></span>
+					</div>
+					<!-- <div class="col-md-4">
+					</div> -->
 				</div>
-				<div class="center-block">
-					Incorrect Answers: <span class="IncorrectAnswersSpan"></span>
+				<div class="row AllDone">
+					<h2>All Done, Here's How You Did</h2>
 				</div>
-				<div class="center-block">
-					Unanswered: <span class="UnansweredSpan"></span>
+				<div class="row AllResults">
+					<div class="center-block">
+						Correct Answers: <span class="CorrectAnswersSpan"></span>
+					</div>
+					<div>
+						Incorrect Answers: <span class="IncorrectAnswersSpan"></span>
+					</div>
+					<div>
+						Unanswered: <span class="UnansweredSpan"></span>
+					</div>
 				</div>
-			</div>
-			<div class="row StartOver center-block">
-				<button class="StartOverButton btn-primary">
-				Start Over?
-				</button>
+				<div class="row StartOver">
+					<button class="StartOverButton btn-primary">
+					Start Over?
+					</button>
+				</div>
 			</div>
 		</div>
 

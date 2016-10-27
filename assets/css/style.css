@@ -4,6 +4,21 @@
   margin-right: auto;
 }
 
+body {
+	background-image: url("../images/background.png");
+}
+
+.container{
+	overflow: auto;
+	
+
+}
+
+.jumbotron{
+	margin-top: 3%;
+	min-height: 650px;
+	height:650px;
+}
 
 .Question{
 
@@ -14,16 +29,43 @@
 }
 
 .AnswerDivOne:hover {
-	outline: 5px solid gray;
-  	outline-offset: 1px;
+	outline: 2px solid gray;
+	width: 200px;
+	height: 20px;
+  
 }
 
 .AnswerDivTwo:hover {
-	outline: 5px solid gray;
-  	outline-offset: 1px;
+	outline: 2px solid gray;
+	width: 200px;
+	height: 20px;
+  
 }
 
 .AnswerDivThree:hover {
-	outline: 5px solid gray;
-  	outline-offset: 1px;
+	outline: 2px solid gray;
+	width: 200px;
+	height: 20px;
+  	
+}
+
+h1 {
+	text-align: center;
+}
+
+h2 {
+	text-align: center;
+}
+
+div {
+	text-align: center;
+}
+
+.StartButton {
+	text-align: center;
+}
+
+.AnswerImage {
+	
+
 }
