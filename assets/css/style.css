@@ -18,34 +18,37 @@ body {
 	margin-top: 3%;
 	min-height: 650px;
 	height:650px;
+	background-image: url("../images/sayagata.png");
+	background-repeat: repeat;
 }
 
 .Question{
-
+	font-size: 30px;
 }
 
 .Choices {
+	font-size: 25px;
 
 }
 
 .AnswerDivOne:hover {
 	outline: 2px solid gray;
 	width: 200px;
-	height: 20px;
+	height: auto;
   
 }
 
 .AnswerDivTwo:hover {
 	outline: 2px solid gray;
 	width: 200px;
-	height: 20px;
+	height: auto;
   
 }
 
 .AnswerDivThree:hover {
 	outline: 2px solid gray;
 	width: 200px;
-	height: 20px;
+	height: auto;
   	
 }
 
@@ -68,4 +71,8 @@ div {
 .AnswerImage {
 	
 
+}
+
+.AllResults {
+	font-size: 25px;
 }

@@ -52,27 +52,27 @@ var unansweredCount = 0;
 
 var questionBank = {
 
-			questionOne: { question: "What is the best type of pie?",
-							answers: { One: "Apple",
-										Two: "Cherry",
-										Three: "Strawberry"},
-							rightAnswer: "Apple",
+			questionOne: { question: 'In which city will you find Michelangelos famous 17-feet-tall marble sculpture "David"?',
+							answers: { One: "Florence",
+										Two: "Venice",
+										Three: "Rome"},
+							rightAnswer: "Florence",
 							answerImage: "assets/images/kevin.gif"
 						},
-			questionTwo: { question: "What kind of cake is the best?",
-							answers: { One: "Chocolate",
-										Two: "Pie",
-										Three: "Strawberry Shortcake"},
-							rightAnswer: "Pie",
+			questionTwo: { question: "In which country will the 2018 Winter Olympics be held?",
+							answers: { One: "France",
+										Two: "South Korea",
+										Three: "Germany"},
+							rightAnswer: "South Korea",
 							answerImage: "assets/images/office.gif"
 						},
 
 
-			questionThree: { question: "Which type of cookie is superior to the rest?",
-							answers: { One: "Chocolate Chip",
-										Two: "Oatmeal Raisin",
-										Three: "Sugar"},
-							rightAnswer: "Chocolate Chip",
+			questionThree: { question: "In England, what is a 'bap'?",
+							answers: { One: "A hamburger bun",
+										Two: "A bouquet of flowers",
+										Three: "A gallon of water"},
+							rightAnswer: "A hamburger bun",
 							answerImage: "assets/images/programming.gif"
 							}
 
